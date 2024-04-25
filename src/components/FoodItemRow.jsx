@@ -3,7 +3,7 @@ import React from 'react';
 const FoodItemRow = ({ item }) => {
     return (
         <div>
-            <h3> {item.title} : { item.price } </h3>
+            <h3> {item.foodItemId}. {item.title} : ${ item.price } </h3>
             <p> { item.description } </p>
         </div>
     );
