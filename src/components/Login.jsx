@@ -20,10 +20,10 @@ const Login = (props) => {
             return
         }
 
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            setEmailError('Please enter a valid email')
-            return
-        }
+        // if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+        //     setEmailError('Please enter a valid email')
+        //     return
+        // }
 
         if ('' === password) {
             setPasswordError('Please enter a password')
@@ -58,6 +58,8 @@ const Login = (props) => {
 
           props.setLoggedIn(true)
           props.setEmail(email)
+
+          console.log("Logged in!!")
           
           navigate('/')
         } else {

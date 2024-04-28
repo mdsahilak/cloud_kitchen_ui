@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import GMap from './GMap';
 
 const Home = (props) => {
   const { loggedIn, email } = props;

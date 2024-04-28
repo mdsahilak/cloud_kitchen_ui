@@ -26,11 +26,14 @@ const FoodItemsList = () => {
 
     console.log(foodItems);
 
+    const handleDelete = () => {
+    };
+
     return (
         <div className="FoodItemsList">
             {
                 foodItems.map((item) => (
-                    <FoodItemRow key={item.foodItemId} item={item} />
+                    <FoodItemRow key={item.foodItemId} item={item} handleDelete={handleDelete} />
                 ))
             }
         </div>
