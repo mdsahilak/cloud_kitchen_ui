@@ -8,6 +8,7 @@ import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import FoodItemsList from './components/FoodItemsList.jsx';
 import KitchensList from './components/KitchensList.jsx';
+import CustomNav from './components/CustomNav.jsx';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -26,12 +27,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1> The Cloud Kitchen </h1>
-
-      <hr />
-      <p>Welcome to the Cloud Kitchen of the Future.</p>
-      <hr />
-
+      <CustomNav />
+      
+      <div className='m-3'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
@@ -40,6 +38,7 @@ function App() {
           <Route path="kitchens" element={<KitchensList />} />
         </Routes>
       </BrowserRouter>
+      </div>
     </div>
   )
 }

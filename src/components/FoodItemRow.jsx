@@ -5,7 +5,7 @@ const FoodItemRow = ({ item, handleDelete }) => {
     return (
         <div>
             <a>
-                <h3> - {item.title} : ${item.price} </h3>
+                <h5> - {item.title} : ${item.price} </h5>
                 <div className="button-container">
                     <Button className='m-1' variant="outline-secondary" >Edit</Button>
                     <Button className='m-1' variant="outline-danger" onClick={handleDelete(item.foodItemId)} >Delete</Button>
