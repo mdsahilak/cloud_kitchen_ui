@@ -16,10 +16,10 @@ function App() {
   
   useEffect(() => {
     // Fetch the user email and token from local storage
-    const user = localStorage.getItem('token') ?? '';
+    const token = localStorage.getItem('token') ?? '';
     
-    // If the token/email does not exist, mark the user as logged out
-    if (!user.token) {
+    // If the token does not exist, mark the user as logged out
+    if (!token) {
       setLoggedIn(false)
       return
     }
