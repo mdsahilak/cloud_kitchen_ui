@@ -51,7 +51,6 @@ const Login = (props) => {
         localStorage.setItem('token', token);
 
         props.setLoggedIn(true)
-        props.setEmail(email)
 
         console.log("Logged in!!")
 

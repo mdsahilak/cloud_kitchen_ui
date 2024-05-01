@@ -16,7 +16,7 @@ function App() {
   
   useEffect(() => {
     // Fetch the user email and token from local storage
-    const user = localStorage.getItem('token');
+    const user = localStorage.getItem('token') ?? '';
     
     // If the token/email does not exist, mark the user as logged out
     if (!user.token) {
@@ -27,15 +27,17 @@ function App() {
 
   return (
     <div className="App">
-      <CustomNav />
+      <CustomNav email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       
       <div className='m-3'>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
-          <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+          <Route path="/" element={<Home />} />
+
           <Route path="/foodItems" element={<FoodItemsList />} />
-          <Route path="kitchens" element={<KitchensList />} />
+          <Route path="/kitchens" element={<KitchensList />} />
+
+          <Route path="/login" element={<Login setLoggedIn={setLoggedIn}/>} />
         </Routes>
       </BrowserRouter>
       </div>
