@@ -12,7 +12,6 @@ import CustomNav from './components/CustomNav.jsx';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [email, setEmail] = useState('')
   
   useEffect(() => {
     // Fetch the user email and token from local storage
@@ -27,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <CustomNav email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <CustomNav loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       
       <div className='m-3'>
       <BrowserRouter>
