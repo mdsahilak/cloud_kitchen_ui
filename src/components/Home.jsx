@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import GMap from './GMap';
 
 const Home = (props) => {
   const { loggedIn, email } = props;
@@ -18,9 +17,8 @@ const onButtonClick = () => {
   return (
     <div className="mainContainer">
       <div className={'titleContainer'}>
-        <div>Welcome!</div>
+        <img className="hero-img" src="food_img.svg" alt="" />
       </div>
-      <div>This is the home page.</div>
       <div className={'buttonContainer'}>
         <input
           className={'inputButton'}

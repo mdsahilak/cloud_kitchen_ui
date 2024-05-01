@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import FoodItemRow from './FoodItemRow.jsx';
 import apiClient from '../Services/ApiClient.js';
 
-const FoodItemsList = () => {
+const KitchensList = () => {
     const [foodItems, setFoodItems] = useState([]);
 
     useEffect(() => {
         const fetchFoodItems = async () => {
             try {
-                let respone = await apiClient.get('foodItems');
+                let respone = await apiClient.get('kitchens');
                 setFoodItems(respone.data);
             } catch (error) {
                 console.log(error);
@@ -21,18 +20,17 @@ const FoodItemsList = () => {
     console.log(foodItems);
 
     const handleDelete = () => {
-        
     };
 
     return (
         <div className="FoodItemsList">
             {
                 foodItems.map((item) => (
-                    <FoodItemRow key={item.foodItemId} item={item} handleDelete={handleDelete} />
+                    <p key={item.kitchenId}>{item.address}</p>
                 ))
             }
         </div>
     );
 }
 
-export default FoodItemsList
+export default KitchensList
