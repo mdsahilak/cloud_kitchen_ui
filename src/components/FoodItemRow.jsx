@@ -1,14 +1,14 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const FoodItemRow = ({ item, handleDelete }) => {
-
     return (
         <div>
             <a>
                 <h3> - {item.title} : ${item.price} </h3>
                 <div className="button-container">
-                    <button className="controls-btn">Edit</button>
-                    <button className="controls-btn" onClick={handleDelete(item.foodItemId)} >Delete</button>
+                    <Button className='m-1' variant="outline-secondary" >Edit</Button>
+                    <Button className='m-1' variant="outline-danger" onClick={handleDelete(item.foodItemId)} >Delete</Button>
                 </div>
             </a>
 
