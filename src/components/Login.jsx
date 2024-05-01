@@ -15,7 +15,7 @@ const Login = (props) => {
     setEmailError('')
     setPasswordError('')
     
-    // Check if the user has entered both fields correctly
+    // Check if the user has entered both fields
     if ('' === email) {
       setEmailError('Please enter your email')
       return
@@ -25,13 +25,6 @@ const Login = (props) => {
       setPasswordError('Please enter a password')
       return
     }
-
-    if (password.length < 7) {
-      setPasswordError('The password must be 8 characters or longer')
-      return
-    }
-
-    console.log(JSON.stringify({ email: email, password: password }));
 
     login()
   }
