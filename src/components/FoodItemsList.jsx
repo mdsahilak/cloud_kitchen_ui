@@ -21,25 +21,29 @@ const FoodItemsList = () => {
 
     console.log(foodItems);
 
-    const handleDelete = () => {
+    function handleFoodCreation(createdFood) {
+        setFoodItems([...foodItems, createdFood]);
+    }
+    
+    function handleFoodEdit(editedFood) {
+        
+    }
+
+    const handleFoodDeletion = () => {
 
     };
-
-    function handleFoodUpdation(updatedFood) {
-        setFoodItems([...foodItems, updatedFood]);
-    }
 
     return (
         <div className="FoodItemsList">
             {
                 foodItems.map((item) => (
-                    <FoodItemRow key={item.foodItemId} item={item} handleDelete={handleDelete} />
+                    <FoodItemRow key={item.foodItemId} item={item} handleDelete={handleFoodDeletion} />
                 ))
             }
 
             <hr />
 
-            <AddFoodItemButton handleUpdatedFood={handleFoodUpdation} />
+            <AddFoodItemButton handleCreatedFood={handleFoodCreation} />
 
             <hr />
             

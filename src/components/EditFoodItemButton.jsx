@@ -4,10 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
 import apiClient from '../Services/ApiClient';
 
-const AddFoodItemButton = ({ handleCreatedFood }) => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState(0);
+const EditFoodItemButton = ({ foodItem, handleUpdatedFood }) => {
+    const [title, setTitle] = useState(foodItem.title);
+    const [description, setDescription] = useState(foodItem.description);
+    const [price, setPrice] = useState(foodItem.price);
 
     const [show, setShow] = useState(false);
 
@@ -15,21 +15,23 @@ const AddFoodItemButton = ({ handleCreatedFood }) => {
     const handleShow = () => setShow(true);
 
     function handleSave() {
-        createAndSaveFoodItem();
+        editAndSaveFoodItem();
     }
 
-    async function createAndSaveFoodItem() {
+    async function editAndSaveFoodItem() {
         const foodItemData = {
+            foodItemId: foodItem.foodItemId,
             title: title,
             description: description,
             price: price
         };
         
         try {
-            let respone = await apiClient.post('fooditems', foodItemData);
+            let respone = await apiClient.put('fooditems/' + foodItem.foodItemId, foodItemData);
             console.log(respone.data);
 
-            handleCreatedFood(respone.data);
+            // handleUpdatedFood(respone.data);
+            window.location = '/fooditems'
 
             setTitle('');
             setDescription('');
@@ -37,26 +39,24 @@ const AddFoodItemButton = ({ handleCreatedFood }) => {
 
             setShow(false);
         } catch (error) {
-            window.alert("Error creating Food Item")
+            window.alert("Error updating Food Item")
             console.log(error);
         }
     }
 
     return (
         <>
-            <Button variant="dark" onClick={handleShow}>
-                Add New Item
-            </Button>
+            <Button className='m-1' variant="outline-secondary" onClick={handleShow} >Edit</Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>
-                        Create New Food Item
+                        Edit Food Item
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <p>Please enter the title, description and price of the food item you would like to add.</p>
+                    <p>Please enter the title, description and price of the food item you would like to edit.</p>
 
                     <Form>
                         <Form.Group className="mb-3">
@@ -86,4 +86,4 @@ const AddFoodItemButton = ({ handleCreatedFood }) => {
     );
 }
 
-export default AddFoodItemButton;
+export default EditFoodItemButton;
