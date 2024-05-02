@@ -52,6 +52,23 @@ input[type='button'] {
   cursor: pointer;
 }
 
+.map-container {
+  height: 700px;
+}
+
+.sidebar {
+  background-color: rgb(35 55 75 / 90%);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+}
+
 .button-container {
   display: flex;
 }
@@ -64,6 +81,7 @@ input[type='button'] {
 
 .hero-img {
   margin-top: 3px;
+  width: 70%;
 }
 
 @keyframes fadeInUp {

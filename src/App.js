@@ -7,8 +7,8 @@ import './App.css'
 import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import FoodItemsList from './components/FoodItemsList.jsx';
-import KitchensList from './components/KitchensList.jsx';
 import CustomNav from './components/CustomNav.jsx';
+import Map from './components/Map.jsx';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -34,8 +34,8 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="/foodItems" element={<FoodItemsList />} />
-          <Route path="/kitchens" element={<KitchensList />} />
-
+          <Route path="/location" element={<Map />} />
+          
           <Route path="/login" element={<Login setLoggedIn={setLoggedIn}/>} />
         </Routes>
       </BrowserRouter>

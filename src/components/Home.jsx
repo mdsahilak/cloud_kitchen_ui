@@ -8,6 +8,8 @@ const Home = () => {
         <p className='mt-1'>Welcome to the Cloud Kitchen of the Future.</p>
       </div>
       <p>Experience delicious food with the fastest delivery times on earth.</p>
+
+      <hr />
     </div>
   )
 }

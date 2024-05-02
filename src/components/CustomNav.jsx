@@ -22,10 +22,7 @@ const CustomNav = (props) => {
             </Navbar.Brand>
             <Nav >
                 <Nav.Link href="/fooditems">Menu</Nav.Link>
-                <Nav.Link href="/kitchens">Kitchens</Nav.Link>
-                <Nav.Link href="/drivers">Drivers</Nav.Link>
-                <Nav.Link href="/reviews">Reviews</Nav.Link>
-                <Nav.Link href="/orders">Orders</Nav.Link>
+                <Nav.Link href="/location">Location</Nav.Link>
             </Nav>
 
             <Button className='ms-auto me-3' variant="outline-dark" onClick={onButtonClick}
