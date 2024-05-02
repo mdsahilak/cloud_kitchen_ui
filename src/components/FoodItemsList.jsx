@@ -26,7 +26,16 @@ const FoodItemsList = () => {
     }
     
     function handleFoodEdit(editedFood) {
-        
+        console.log(editedFood);
+        const updatedFoodItems = foodItems.map( (item) => {
+            if (item.foodItemId === editedFood.foodItemId) {
+                return editedFood;
+            } else {
+                return item;
+            }
+        })
+
+        setFoodItems(updatedFoodItems);
     }
 
     const handleFoodDeletion = () => {
@@ -37,13 +46,13 @@ const FoodItemsList = () => {
         <div className="FoodItemsList">
             {
                 foodItems.map((item) => (
-                    <FoodItemRow key={item.foodItemId} item={item} handleDelete={handleFoodDeletion} />
+                    <FoodItemRow key={item.foodItemId} item={item} handleEdit={handleFoodEdit} handleDelete={handleFoodDeletion} />
                 ))
             }
 
             <hr />
 
-            <AddFoodItemButton handleCreatedFood={handleFoodCreation} />
+            <AddFoodItemButton handleCreation={handleFoodCreation} />
 
             <hr />
             

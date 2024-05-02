@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
 import apiClient from '../Services/ApiClient';
 
-const EditFoodItemButton = ({ foodItem, handleUpdatedFood }) => {
+const EditFoodItemButton = ({ foodItem, handleEdit }) => {
     const [title, setTitle] = useState(foodItem.title);
     const [description, setDescription] = useState(foodItem.description);
     const [price, setPrice] = useState(foodItem.price);
@@ -27,11 +27,9 @@ const EditFoodItemButton = ({ foodItem, handleUpdatedFood }) => {
         };
         
         try {
-            let respone = await apiClient.put('fooditems/' + foodItem.foodItemId, foodItemData);
-            console.log(respone.data);
-
-            // handleUpdatedFood(respone.data);
-            window.location = '/fooditems'
+            await apiClient.put('fooditems/' + foodItem.foodItemId, foodItemData);
+            
+            handleEdit(foodItemData);
 
             setTitle('');
             setDescription('');
