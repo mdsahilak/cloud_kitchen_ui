@@ -12,14 +12,6 @@ const Map = () => {
     const [zoom, setZoom] = useState(13);
 
     useEffect(() => {
-      const loggedIn = localStorage.getItem('token') != null
-
-      if (!loggedIn) {
-          window.location = '/login'
-      }
-    }, []);
-
-    useEffect(() => {
         if (map.current) return;
          // initialize map only once
 
@@ -35,6 +27,8 @@ const Map = () => {
             setLat(map.current.getCenter().lat.toFixed(4));
             setZoom(map.current.getZoom().toFixed(2));
           });
+
+        
     });
 
     return (
@@ -42,7 +36,9 @@ const Map = () => {
           <div className="sidebar">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
           </div>
-          <div ref={mapContainer} className="map-container" />
+          <div ref={mapContainer} className="map-container">
+            <img className="pin" src="mapbox-icon.png" />
+          </div>
         </div>
       )
 }
