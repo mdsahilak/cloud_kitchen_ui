@@ -15,7 +15,11 @@ const EditFoodItemButton = ({ foodItem, handleEdit }) => {
     const handleShow = () => setShow(true);
 
     function handleSave() {
-        editAndSaveFoodItem();
+        if (title === '' || description === '' || price === 0) {
+            window.alert("Invalid input values. Please try again with the correct inputs.")
+        } else {
+            editAndSaveFoodItem();
+        }
     }
 
     async function editAndSaveFoodItem() {
@@ -30,10 +34,6 @@ const EditFoodItemButton = ({ foodItem, handleEdit }) => {
             await apiClient.put('fooditems/' + foodItem.foodItemId, foodItemData);
             
             handleEdit(foodItemData);
-
-            setTitle('');
-            setDescription('');
-            setPrice(0);
 
             setShow(false);
         } catch (error) {

@@ -15,7 +15,11 @@ const AddFoodItemButton = ({ handleCreation }) => {
     const handleShow = () => setShow(true);
 
     function handleSave() {
-        createAndSaveFoodItem();
+        if (title === '' || description === '' || price === 0) {
+            window.alert("Invalid input values. Please try again with the correct inputs.")
+        } else {
+            createAndSaveFoodItem();
+        }
     }
 
     async function createAndSaveFoodItem() {
@@ -45,7 +49,7 @@ const AddFoodItemButton = ({ handleCreation }) => {
     return (
         <>
             <Button variant="dark" onClick={handleShow}>
-                Add New Item
+                + Add New Food Item
             </Button>
 
             <Modal show={show} onHide={handleClose}>

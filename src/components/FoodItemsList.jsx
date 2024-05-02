@@ -10,6 +10,14 @@ const FoodItemsList = () => {
     const [foodItems, setFoodItems] = useState([]);
 
     useEffect(() => {
+        const loggedIn = localStorage.getItem('token') != null
+
+        if (!loggedIn) {
+            window.location = '/login'
+        }
+    }, []);
+
+    useEffect(() => {
         const fetchFoodItems = async () => {
             try {
                 let respone = await apiClient.get('foodItems');
@@ -41,32 +49,37 @@ const FoodItemsList = () => {
         setFoodItems(updatedFoodItems);
     }
 
-    const handleFoodDeletion = () => {
+    function handleFoodDeletion(deletedFood) {
+        const updatedFoodItems = foodItems.filter((item) => {
+            if (item.foodItemId !== deletedFood.foodItemId) {
+                return item;
+            }
+        })
 
+        setFoodItems(updatedFoodItems);
     };
 
     return (
         <div className="FoodItemsList">
+            <hr />
+
+            <div className='text-center' >
+                <AddFoodItemButton handleCreation={handleFoodCreation} />
+            </div>
+
+            <hr />
+
             <Container>
                 <Row>
-                {
-                foodItems.map((item) => (
-                    <Col className="m-3">
-                        <FoodItemRow key={item.foodItemId} item={item} handleEdit={handleFoodEdit} handleDelete={handleFoodDeletion} />
-                    </Col>
-                ))
-            }
+                    {
+                        foodItems.map((item) => (
+                            <Col className="p-3">
+                                <FoodItemRow key={item.foodItemId} item={item} handleEdit={handleFoodEdit} handleDelete={handleFoodDeletion} />
+                            </Col>
+                        ))
+                    }
                 </Row>
             </Container>
-            
-
-            <hr />
-
-            <AddFoodItemButton handleCreation={handleFoodCreation} />
-
-            <hr />
-
-
         </div>
     );
 }

@@ -12,6 +12,14 @@ const Map = () => {
     const [zoom, setZoom] = useState(13);
 
     useEffect(() => {
+      const loggedIn = localStorage.getItem('token') != null
+
+      if (!loggedIn) {
+          window.location = '/login'
+      }
+    }, []);
+
+    useEffect(() => {
         if (map.current) return;
          // initialize map only once
 

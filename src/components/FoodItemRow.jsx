@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import EditFoodItemButton from './EditFoodItemButton';
+import DeleteFoodItemButton from './DeleteFoodItemButton';
 import Card from 'react-bootstrap/Card';
 
 const FoodItemRow = ({ item, handleEdit, handleDelete }) => {
@@ -16,7 +17,7 @@ const FoodItemRow = ({ item, handleEdit, handleDelete }) => {
 
                 <div className="button-container">
                     <EditFoodItemButton foodItem={item} handleEdit={handleEdit} />
-                    <Button className='m-1' variant="outline-danger" onClick={handleDelete(item.foodItemId)} >Delete</Button>
+                    <DeleteFoodItemButton foodItem={item} handleDelete={handleDelete} />
                 </div>
             </Card.Body>
         </Card>
