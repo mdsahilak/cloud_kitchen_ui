@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import FoodItemRow from './FoodItemRow.jsx';
 import apiClient from '../Services/ApiClient.js';
 import AddFoodItemButton from './AddFoodItemButton.jsx';
@@ -24,10 +27,10 @@ const FoodItemsList = () => {
     function handleFoodCreation(createdFood) {
         setFoodItems([...foodItems, createdFood]);
     }
-    
+
     function handleFoodEdit(editedFood) {
         console.log(editedFood);
-        const updatedFoodItems = foodItems.map( (item) => {
+        const updatedFoodItems = foodItems.map((item) => {
             if (item.foodItemId === editedFood.foodItemId) {
                 return editedFood;
             } else {
@@ -44,18 +47,25 @@ const FoodItemsList = () => {
 
     return (
         <div className="FoodItemsList">
-            {
+            <Container>
+                <Row>
+                {
                 foodItems.map((item) => (
-                    <FoodItemRow key={item.foodItemId} item={item} handleEdit={handleFoodEdit} handleDelete={handleFoodDeletion} />
+                    <Col className="m-3">
+                        <FoodItemRow key={item.foodItemId} item={item} handleEdit={handleFoodEdit} handleDelete={handleFoodDeletion} />
+                    </Col>
                 ))
             }
+                </Row>
+            </Container>
+            
 
             <hr />
 
             <AddFoodItemButton handleCreation={handleFoodCreation} />
 
             <hr />
-            
+
 
         </div>
     );
