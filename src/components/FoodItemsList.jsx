@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FoodItemRow from './FoodItemRow.jsx';
 import apiClient from '../Services/ApiClient.js';
+import AddFoodItemButton from './AddFoodItemButton.jsx';
 
 const FoodItemsList = () => {
     const [foodItems, setFoodItems] = useState([]);
@@ -21,8 +22,12 @@ const FoodItemsList = () => {
     console.log(foodItems);
 
     const handleDelete = () => {
-        
+
     };
+
+    function handleFoodUpdation(updatedFood) {
+        setFoodItems([...foodItems, updatedFood]);
+    }
 
     return (
         <div className="FoodItemsList">
@@ -31,6 +36,14 @@ const FoodItemsList = () => {
                     <FoodItemRow key={item.foodItemId} item={item} handleDelete={handleDelete} />
                 ))
             }
+
+            <hr />
+
+            <AddFoodItemButton handleUpdatedFood={handleFoodUpdation} />
+
+            <hr />
+            
+
         </div>
     );
 }
