@@ -84,6 +84,17 @@ input[type='button'] {
   width: 70%;
 }
 
+.food-card {
+  width: 18rem;
+  transition: all .1s ease-in-out;
+}
+
+.food-card:hover {
+  box-shadow: 10px 10px 10px rgb(177, 176, 176);
+  transform: scale(1.1);
+}
+
+
 @keyframes fadeInUp {
   0% {
     transform: translateY(50%);

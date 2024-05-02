@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 
 const FoodItemRow = ({ item, handleEdit, handleDelete }) => {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card className="food-card">
             <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2R9u5mg0oJ6EGNW3-UFPN_QzFbCNq6FkTpz-fRmYaAg&s" />
             <Card.Body>
                 <Card.Title>{item.title} : ${item.price}</Card.Title>
